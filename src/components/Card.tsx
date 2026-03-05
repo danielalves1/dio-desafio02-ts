@@ -1,15 +1,44 @@
-interface ICard {
-  id: number,
-  paragraph: string,
-  details: string
-}
+import { Box, Center, Input } from "@chakra-ui/react"
+import { Header } from "./Header/Header"
+import { CustomButton } from "./CustomButton"
+import { login } from "../services/login"
 
-export const Card = ({ id, paragraph, details }: ICard) => {
+
+export const Card = () => {
   return(
-    <div>
-      <h1>Card {id}</h1>
-      <p>{paragraph}</p>
-      <p>{details}</p>
-    </div>
+    <Center>
+        <Box
+          sx={{
+            minHeight: '100vh',
+            backgroundColor: '#9413dc',
+            width: '100vw',
+            padding: '25px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box backgroundColor='#FFFFFF' borderRadius='25px'
+            sx={{
+              maxWidth: 500,
+              width: '100%',
+              display: 'flex',
+              gap: 5,
+              flexDirection: 'column',
+            }} padding='15px' >
+            <Header />
+            <Center>
+              <h1>Faça o login</h1>
+            </Center>
+            <Input placeholder="email" />
+            <Input placeholder="password" />
+            <Center>
+              <CustomButton onClick={login} colorScheme='teal' size='sm' width='100%' marginTop='5px'>
+                Acessar
+              </CustomButton>
+            </Center>
+          </Box>
+        </Box>
+      </Center>
   )
 }
